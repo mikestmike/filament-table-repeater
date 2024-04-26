@@ -33,6 +33,13 @@
         );
     }
 
+    foreach ($extraItemActions as $extraItemAction) {
+        $visibleExtraItemActions = array_filter(
+            $extraItemActions,
+            fn (Action $action): bool => $action->isVisible(),
+        );
+    }
+
     $hasActions = $reorderAction->isVisible()
         || $cloneAction->isVisible()
         || $deleteAction->isVisible()
