@@ -5,6 +5,7 @@ namespace Awcodes\TableRepeater;
 use Closure;
 use Filament\Support\Concerns\EvaluatesClosures;
 use Filament\Support\Enums\Alignment;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Str;
 
 class Header
@@ -13,7 +14,7 @@ class Header
 
     final public function __construct(
         public string $name,
-        public string | Closure | null $label = null,
+        public string | Htmlable | Closure | null $label = null,
         public string | Closure | Alignment | null $align = null,
         public string | Closure | null $width = null,
         public bool | Closure | null $isRequired = null,
@@ -24,7 +25,7 @@ class Header
         return app(static::class, ['name' => $name]);
     }
 
-    public function label(string | Closure $label): static
+    public function label(string | Htmlable | Closure $label): static
     {
         $this->label = $label;
 
@@ -52,7 +53,7 @@ class Header
         return $this;
     }
 
-    public function getLabel(): string
+    public function getLabel(): string | Htmlable
     {
         return $this->evaluate($this->label)
             ?? (string) Str::of($this->name)->title();
