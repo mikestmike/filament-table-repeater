@@ -68,7 +68,7 @@
                 <table class="w-full">
                     <thead @class([
                         'table-repeater-header-hidden sr-only' => ! $renderHeader,
-                        'table-repeater-header rounded-t-xl overflow-hidden border-b border-gray-950/5 dark:border-white/20' => $renderHeader,
+                        'table-repeater-header rounded-t-xl overflow-hidden ' => $renderHeader,
                     ])>
                     <tr class="text-xs md:divide-x">
                         @foreach ($headers as $key => $header)
