@@ -103,7 +103,7 @@
                     <tbody
                         x-sortable
                         wire:end.stop="{{ 'mountFormComponentAction(\'' . $statePath . '\', \'reorder\', { items: $event.target.sortable.toArray() })' }}"
-                        class="table-repeater-rows-wrapper divide-y divide-gray-950/5 dark:divide-white/20"
+                        class="table-repeater-rows-wrapper"
                     >
                     @if (count($containers))
                         @foreach ($containers as $uuid => $row)
